@@ -16,7 +16,7 @@ services:
     image: progresql:latest
     restart: always
     environment:
-      - POSTGRES_PASSWORD=mysecrect
+      POSTGRES_PASSWORD=mysecrect
       expose:
       - 5432
   proxy:

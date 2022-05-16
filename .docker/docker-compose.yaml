@@ -17,7 +17,7 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD=mysecrect
-      expose:
+    expose:
       - 5432
   proxy:
     build: proxy

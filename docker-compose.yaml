@@ -5,18 +5,15 @@ services:
       - db-password
     depends_on:
       - db
+  foreend:
+    build: foreend
   db:
-    image: mariadb
+    image: progresql:latest
     restart: always
-    secrets:
-      - db-password
-    volumes:
-      - db-data:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=example
-      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
-    expose:
-      - 3306
+      - POSTGRES_PASSWORD=mysecrect
+      expose:
+      - 5432
   proxy:
     build: proxy
     ports:

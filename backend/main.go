@@ -10,7 +10,7 @@ import (
 	"os"
 	"time"
 
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/postgresql"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
@@ -20,7 +20,7 @@ func connect() (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	return sql.Open("mysql", fmt.Sprintf("root:%s@tcp(db:3306)/example", string(bin)))
+	return sql.Open("psql", fmt.Sprintf("postgres:%s@tcp(db:5432)/example", string(bin)))
 }
 
 func blogHandler(w http.ResponseWriter, r *http.Request) {

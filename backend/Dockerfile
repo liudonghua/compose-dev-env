@@ -1,6 +1,11 @@
-FROM golang:1.16 AS build
+FROM golang:latest AS build
 WORKDIR /go/src/github.com/org/repo
 COPY . .
+
+ENV HTTPS_PROXY=http://liudhNB.lan:50000 \
+    https_proxy=$HTTPS_PROXY \
+    HTTP_RPOXY=$HTTPS_PROXY \
+    http_proxy=$HTTPS_PROXY
 
 ENV CGO_ENABLED=0
 RUN go build -o server .
